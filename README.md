@@ -37,7 +37,7 @@ function isIncognito(callback){
        }
 }
 ```
-[See Demo](./)
+[See Demo](https://trantienvn.github.io/icognito-mode-detect)
 
 # Cách sử dụng
 ```
