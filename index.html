@@ -1,1 +1,35 @@
-index.hhtml
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Incognito Mode Demo</title>
+</head>
+<body>
+    <h1 id="status">Status: Unknown</h1>
+    
+    <script>
+        function isIncognito(callback) {
+            var fs = window.RequestFileSystem || window.webkitRequestFileSystem;
+            if (!fs) {
+                callback(false);
+            } else {
+                fs(window.TEMPORARY,
+                    100,
+                    callback.bind(undefined, false),
+                    callback.bind(undefined, true)
+                );
+            }
+        }
+
+        isIncognito(function(itIs) {
+            var statusElement = document.getElementById('status');
+            if (itIs) {
+                statusElement.textContent = "Bạn đang ở chế độ ẩn danh";
+            } else {
+                statusElement.textContent = "Bạn không ở chế độ ẩn danh";
+            }
+        });
+    </script>
+</body>
+</html>
